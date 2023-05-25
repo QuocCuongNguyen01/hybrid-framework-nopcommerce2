@@ -352,4 +352,5 @@ public class BasePage {
 		new WebDriverWait(driver, 30).until(ExpectedConditions.invisibilityOfAllElements(getListWebElement(driver, locator)));
 	}
 
+	
 }
