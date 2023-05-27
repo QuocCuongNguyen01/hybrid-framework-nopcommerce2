@@ -3,6 +3,7 @@ package com.nopcommerce.account;
 import static org.testng.Assert.assertEquals;
 
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -12,7 +13,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class Account_01_Register {
+public class Level_01_DRY {
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir");
 
@@ -20,8 +21,8 @@ public class Account_01_Register {
 	public void beforeClass() {
 		System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver");
 		driver = new FirefoxDriver();
+		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 
-		driver.manage().window().maximize();
 	}
 
 	@Test
@@ -68,7 +69,6 @@ public class Account_01_Register {
 		driver.findElement(By.cssSelector("input#Password")).sendKeys("123");
 		driver.findElement(By.cssSelector("input#ConfirmPassword")).sendKeys("123");
 		driver.findElement(By.cssSelector("button#register-button")).click();
-		sleepInsecond(2);
 		Assert.assertEquals(driver.findElement(By.cssSelector("span#Password-error")).getText(), "Password must meet the following rules:\nmust have at least 6 characters");
 	// var text = $$(element)[note]
 		//text.textcontext
@@ -89,7 +89,6 @@ public class Account_01_Register {
 		driver.findElement(By.cssSelector("input#Password")).sendKeys("123456");
 		driver.findElement(By.cssSelector("input#ConfirmPassword")).sendKeys("123");
 		driver.findElement(By.cssSelector("button#register-button")).click();
-		sleepInsecond(2);
 
 		Assert.assertEquals(driver.findElement(By.cssSelector("span#ConfirmPassword-error")).getText(), "The password and confirmation password do not match.");
 
@@ -106,7 +105,6 @@ public class Account_01_Register {
 		driver.findElement(By.cssSelector("input#Password")).sendKeys("123456");
 		driver.findElement(By.cssSelector("input#ConfirmPassword")).sendKeys("123456");
 		driver.findElement(By.cssSelector("button#register-button")).click();
-		sleepInsecond(2);
 
 		Assert.assertEquals(driver.findElement(By.cssSelector("div.result")).getText(), "Your registration completed");
 

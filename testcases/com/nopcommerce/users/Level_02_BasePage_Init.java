@@ -4,7 +4,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class User_01_Register {
+public class Level_02_BasePage_Init {
 	@BeforeClass
 	public void beforeClass() {
 		

@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite parallel="false" name="Nopcommerce">
-  <test name="Run on FireFox">
-    <classes>
-      <class name="com.nopcommerce.users.User_01_Register"/>
-    </classes>
-  </test> 
+	<test name="Run on FireFox">
+		<classes>
+			<class name="com.nopcommerce.account.Level_01_DRY" />
+			<class name="com.nopcommerce.account.Level_02_BasePage_1_Init" />
+			<class name="com.nopcommerce.account.Level_02_BasePage_2_Static" />
+			<class name="com.nopcommerce.account.Level_02_BasePage_3_Inheritance" />
+
+		</classes>
+	</test>
 </suite> 

@@ -27,6 +27,13 @@ public class BasePage {
 	// Kiểu dữ liệu return về khớp với kiểu dữ liệu của hàm
 
 	/* Web Browser */
+	
+	// Không cần phải khởi tạo đối tượng mà vẫn truy cập vào hàm này được 
+	
+	public static BasePage getBasePage() {
+		return new BasePage();
+	}
+	
 	public void openPageUrl(WebDriver driver, String pageUrl) {
 		driver.get(pageUrl);
 	}
