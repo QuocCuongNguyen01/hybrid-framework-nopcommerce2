@@ -2,23 +2,28 @@ package PageObject;
 
 import org.openqa.selenium.WebDriver;
 
+import PageUIs.CustomerPageUI;
 import commons.BasePage;
 
 public class CustomerPageObject extends BasePage{
 	WebDriver driver;
+	public CustomerPageObject(WebDriver driver) {
+		this.driver = driver;
+	}
+
 	public String getFirstNameTexboxAttributeValue() {
-		
-		return null;
+		waitForElementVisible(driver, CustomerPageUI.FISTNAME_TEXTBOX);
+		return getElementAttribute(driver, CustomerPageUI.FISTNAME_TEXTBOX, "value");
 	}
 
 	public String getLastNameTexboxAttributeValue() {
-		// TODO Auto-generated method stub
-		return null;
+		waitForElementVisible(driver, CustomerPageUI.LASTNAME_TEXTBOX);
+		return getElementAttribute(driver, CustomerPageUI.LASTNAME_TEXTBOX, "value");
 	}
 
 	public String getEmailTexboxAttributeValue() {
-		// TODO Auto-generated method stub
-		return null;
+		waitForElementVisible(driver, CustomerPageUI.EMAIL_TEXTBOX);
+		return getElementAttribute(driver, CustomerPageUI.EMAIL_TEXTBOX, "value");
 	}
 
 	

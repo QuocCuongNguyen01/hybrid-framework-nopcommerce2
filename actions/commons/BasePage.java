@@ -27,13 +27,13 @@ public class BasePage {
 	// Kiểu dữ liệu return về khớp với kiểu dữ liệu của hàm
 
 	/* Web Browser */
-	
-	// Không cần phải khởi tạo đối tượng mà vẫn truy cập vào hàm này được 
-	
+
+	// Không cần phải khởi tạo đối tượng mà vẫn truy cập vào hàm này được
+
 	public static BasePage getBasePage() {
 		return new BasePage();
 	}
-	
+
 	public void openPageUrl(WebDriver driver, String pageUrl) {
 		driver.get(pageUrl);
 	}
@@ -205,8 +205,8 @@ public class BasePage {
 		}
 	}
 
-	public String getElementAttribute(WebDriver driver, String locator) {
-		return getWebElement(driver, locator).getAttribute(locator);
+	public String getElementAttribute(WebDriver driver, String locator, String attributeName) {
+		return getWebElement(driver, locator).getAttribute(attributeName);
 	}
 
 	public String getElementCssValue(WebDriver driver, String locator, String cssPropertyName) {
@@ -339,24 +339,37 @@ public class BasePage {
 		return (String) ((JavascriptExecutor) driver).executeScript("return arguments[0].validationMessage;", getWebElement(driver, locator));
 	}
 
-	public boolean isImageLoaded(WebDriver driver, String locator) {
+	public Boolean isImageLoaded1(WebDriver driver, String locator) {
 		return (boolean) ((JavascriptExecutor) driver).executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth != 'undefined' && arguments[0].naturalWidth > 0", getWebElement(driver, locator));
 	}
-	
+
+	public Boolean isImageLoaded2(WebDriver driver, String locatortype) {
+		JavascriptExecutor jsExcutor = (JavascriptExecutor) driver;
+		boolean status = (boolean) jsExcutor.executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth != 'undefined' && arguments[0].naturalWidth > 0", getWebElement(driver, locatortype));
+		return status;
+	}
+
+	public boolean isImageLoaded3(WebDriver driver, String locator) {
+		return (boolean) ((JavascriptExecutor) driver).executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth != 'undefined' && arguments[0].naturalWidth > 0", getWebElement(driver, locator));
+	}
 	public void waitForElementVisible(WebDriver driver, String locator) {
 		new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(getByXpath(locator)));
 	}
-	
-	public void waitForElementInvisible(WebDriver driver, String locator) {
-		new WebDriverWait(driver, 30).until(ExpectedConditions.invisibilityOfElementLocated(getByXpath(locator)));
-	}
-	
+
 	public void waitForListElementVisible(WebDriver driver, String locator) {
 		new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfAllElements(getListWebElement(driver, locator)));
 	}
-	
+
+	public void waitForElementInvisible(WebDriver driver, String locator) {
+		new WebDriverWait(driver, 30).until(ExpectedConditions.invisibilityOfElementLocated(getByXpath(locator)));
+	}
+
 	public void waitForListElementInvisible(WebDriver driver, String locator) {
 		new WebDriverWait(driver, 30).until(ExpectedConditions.invisibilityOfAllElements(getListWebElement(driver, locator)));
+	}
+
+	public void waitForElementClickable(WebDriver driver, String locator) {
+		new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(getWebElement(driver, locator)));
 	}
 
 }

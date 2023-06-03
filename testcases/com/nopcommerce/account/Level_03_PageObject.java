@@ -3,7 +3,6 @@ package com.nopcommerce.account;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
@@ -35,14 +34,14 @@ public class Level_03_PageObject extends BasePage {
 		driver.get("https://demo.nopcommerce.com/");
 		// Mở 1 URL ra nó page nào -> khởi tạo page đó lên
 		// Từ 1 page này chuyển qua page kia -> khởi tạo page đó lên
-		homePage = new HomePageObject();
+		homePage = new HomePageObject(driver);
 	}
 
 	@Test
 	public void User_01_Register_Empty_Data() {
 		homePage.clickToRegisterLink();
 
-		registerPage = new RegisterPageObject();
+		registerPage = new RegisterPageObject(driver);
 
 		registerPage.clickToRegisterButton();
 
@@ -57,11 +56,11 @@ public class Level_03_PageObject extends BasePage {
 	public void User_02_Register_Invalid_Email() {
 		registerPage.clickToNopCommerceLogo();
 
-		homePage = new HomePageObject();
+		homePage = new HomePageObject(driver);
 
 		homePage.clickToRegisterLink();
 
-		registerPage = new RegisterPageObject();
+		registerPage = new RegisterPageObject(driver);
 
 		registerPage.enterToFirstNameTextbox("Anh");
 		registerPage.enterToLastNameTextbox("Tuan");
@@ -79,11 +78,11 @@ public class Level_03_PageObject extends BasePage {
 	public void User_03_Register_Invalid_Passsword() {
 		registerPage.clickToNopCommerceLogo();
 
-		homePage = new HomePageObject();
+		homePage = new HomePageObject(driver);
 
 		homePage.clickToRegisterLink();
 
-		registerPage = new RegisterPageObject();
+		registerPage = new RegisterPageObject(driver);
 
 		registerPage.enterToFirstNameTextbox("Anh");
 		registerPage.enterToLastNameTextbox("Tuan");
@@ -101,11 +100,11 @@ public class Level_03_PageObject extends BasePage {
 	public void User_04_Register_Incorrect_Confirm_Password() {
 		registerPage.clickToNopCommerceLogo();
 
-		homePage = new HomePageObject();
+		homePage = new HomePageObject(driver);
 
 		homePage.clickToRegisterLink();
 
-		registerPage = new RegisterPageObject();
+		registerPage = new RegisterPageObject(driver);
 
 		registerPage.enterToFirstNameTextbox("Anh");
 		registerPage.enterToLastNameTextbox("Tuan");
@@ -123,11 +122,11 @@ public class Level_03_PageObject extends BasePage {
 	public void User_05_Register_Success() {
 		registerPage.clickToNopCommerceLogo();
 
-		homePage = new HomePageObject();
+		homePage = new HomePageObject(driver);
 
 		homePage.clickToRegisterLink();
 
-		registerPage = new RegisterPageObject();
+		registerPage = new RegisterPageObject(driver);
 		
 		registerPage.enterToFirstNameTextbox("Anh");
 		registerPage.enterToLastNameTextbox("Tuan");
@@ -144,11 +143,11 @@ public class Level_03_PageObject extends BasePage {
 	public void User_06_Login_Success() {
 		registerPage.clickToNopCommerceLogo();
 		
-		homePage = new HomePageObject();
+		homePage = new HomePageObject(driver);
 
 		homePage.clickToLoginLink();
 		
-		loginPage = new  LoginPageObject();
+		loginPage = new  LoginPageObject(driver);
 		
 		loginPage.enterToEmailTextBox(emailAdress);
 		
@@ -156,15 +155,15 @@ public class Level_03_PageObject extends BasePage {
 
 		loginPage.clickToLoginButton();
 		
-		homePage = new HomePageObject();
+		homePage = new HomePageObject(driver);
 		
 		homePage.clickToMyAccountLink();
 		
-		customerPage = new CustomerPageObject();
+		customerPage = new CustomerPageObject(driver);
 				
 		Assert.assertEquals(customerPage.getFirstNameTexboxAttributeValue(), "Anh");
 		Assert.assertEquals(customerPage.getLastNameTexboxAttributeValue(), "Tuan");
-		Assert.assertEquals(customerPage.getEmailTexboxAttributeValue(), getEmailRandom());
+		Assert.assertEquals(customerPage.getEmailTexboxAttributeValue(), emailAdress);
 	}
 
 	public void sleepInsecond(long timeInsecond) {
