@@ -16,7 +16,7 @@ import PageObject.LoginPageObject;
 import PageObject.RegisterPageObject;
 import commons.BasePage;
 
-public class Level_03_PageObject extends BasePage {
+public class Level_03_PageObject {
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir");
 	private HomePageObject homePage;
