@@ -7,11 +7,11 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import PageObject.CustomerPageObject;
-import PageObject.HomePageObject;
-import PageObject.LoginPageObject;
-import PageObject.RegisterPageObject;
 import commons.BaseTest;
+import pageObject.CustomerPageObject;
+import pageObject.HomePageObject;
+import pageObject.LoginPageObject;
+import pageObject.RegisterPageObject;
 
 public class Level_05_WebDriverManagaer_SeleniumManager extends BaseTest {
 	WebDriver driver;

@@ -10,11 +10,11 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import PageObject.CustomerPageObject;
-import PageObject.HomePageObject;
-import PageObject.LoginPageObject;
-import PageObject.RegisterPageObject;
 import commons.BasePage;
+import pageObject.CustomerPageObject;
+import pageObject.HomePageObject;
+import pageObject.LoginPageObject;
+import pageObject.RegisterPageObject;
 
 public class Level_03_PageObject {
 	WebDriver driver;

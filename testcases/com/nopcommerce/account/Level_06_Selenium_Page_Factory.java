@@ -8,12 +8,13 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObject.CustomerPageObject;
-import pageObject.HomePageObject;
-import pageObject.LoginPageObject;
-import pageObject.RegisterPageObject;
+import pageObject.factory.CustomerPageObject;
+import pageObject.factory.HomePageObject;
+import pageObject.factory.LoginPageObject;
+import pageObject.factory.RegisterPageObject;
 
-public class Level_04_Multiple_Browser extends BaseTest {
+
+public class Level_06_Selenium_Page_Factory extends BaseTest {
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir");
 	private HomePageObject homePage;
@@ -31,8 +32,6 @@ public class Level_04_Multiple_Browser extends BaseTest {
 
 	@Test
 	public void User_01_Register_Empty_Data() {
-		// Mở 1 URL ra nó page nào -> khởi tạo page đó lên
-		// Từ 1 page này chuyển qua page kia -> khởi tạo page đó lên
 		homePage = new HomePageObject(driver);
 		homePage.clickToRegisterLink();
 

@@ -1,7 +1,7 @@
 package commons;
 
+import java.time.Duration;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
@@ -9,9 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.opera.OperaDriver;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
 	private WebDriver driver;
@@ -44,16 +42,21 @@ public class BaseTest {
 //			driver = new FirefoxDriver();
 
 			// WebDriverManager 5.x: Tải Driver + setting biến môi trường và khởi tạo driver lên
-			driver = WebDriverManager.firefoxdriver().create();
+//			driver = WebDriverManager.firefoxdriver().create();
+			driver = new FirefoxDriver();
 			break;
 		case CHROME:
-			driver = WebDriverManager.chromedriver().create();
+//			driver = WebDriverManager.chromedriver().create();
+			driver = new ChromeDriver();
+
 			break;
 		case EDGE:
-			driver = WebDriverManager.edgedriver().create();
+//			driver = WebDriverManager.edgedriver().create();
+			driver = new EdgeDriver();
 			break;
 		case OPERA:
-			driver = WebDriverManager.operadriver().create();
+//			driver = WebDriverManager.operadriver().create();
+//		 	driver = new OperaDriver();
 			break;
 
 		default:
@@ -64,7 +67,7 @@ public class BaseTest {
 		driver.manage().window().setPosition(new Point(0, 0));
 		driver.manage().window().setSize(new Dimension(1920, 1080));
 
-		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 		driver.get("https://demo.nopcommerce.com/");
 		return driver;
 	}
