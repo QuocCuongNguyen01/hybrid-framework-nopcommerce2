@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 import PageUIs.LoginPageUI;
 import commons.BasePage;
+import commons.PageGeneratorManager;
 
 public class LoginPageObject extends BasePage {
 	WebDriver driver;
@@ -22,9 +23,10 @@ public class LoginPageObject extends BasePage {
 		senkeyToElement(driver, LoginPageUI.PASSWORD_TEXTBOX, password);
 	}
 
-	public void clickToLoginButton() {
+	public HomePageObject clickToLoginButton() {
 		waitForElementClickable(driver, LoginPageUI.LOGIN_BUTTON);
 		clickToElement(driver, LoginPageUI.LOGIN_BUTTON);
+		return PageGeneratorManager.getHomePage(driver);
 	}
 
 	public String getEmailErrorMessageText() {
