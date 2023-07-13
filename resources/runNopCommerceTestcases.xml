@@ -4,11 +4,12 @@
 		<parameter name="browser" value="firefox" />
 		<classes>
 
-			<class name="com.nopcommerce.account.Level_07_Page_Manager_3" />
+			<class name="com.nopcommerce.account.Level_08_Switch_Page" />
 
 		</classes>
 	</test>
-	<test name="Run on Chrome">
+
+	<!-- <test name="Run on Chrome">
 		<parameter name="browser" value="chrome" />
 		<classes>
 
@@ -24,7 +25,7 @@
 
 		</classes>
 	</test>
-	<!-- <test name="Run on Opera">
+	<test name="Run on Opera">
 		<parameter name="browser" value="opera" />
 		<classes>
 

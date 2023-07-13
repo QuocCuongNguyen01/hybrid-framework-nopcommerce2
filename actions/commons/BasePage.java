@@ -17,6 +17,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import PageUIs.BasePageUI;
+import PageUIs.CustomerPageUI;
+import PageUIs.OrderPageUI;
+import pageObject.AddressPageObject;
+import pageObject.CustomerPageObject;
+import pageObject.OrderPageObject;
+import pageObject.RewardPointPageObject;
+
 public class BasePage {
 
 	// Hàm dùng để làm gì
@@ -369,8 +377,35 @@ public class BasePage {
 		new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.invisibilityOfAllElements(getListWebElement(driver, locator)));
 	}
 
-	public void waitForElementClickable(WebDriver driver, String locator) {
+	protected void waitForElementClickable(WebDriver driver, String locator) {
 		new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(getWebElement(driver, locator)));
 	}
+	public AddressPageObject openAddressPage(WebDriver driver) {
+		waitForElementVisible(driver, BasePageUI.ADDRESS_LINK_TEXT);
+		clickToElement(driver, BasePageUI.ADDRESS_LINK_TEXT);
+		return PageGeneratorManager.getAddressPage(driver);
+	}
+
+	public OrderPageObject openOrderPage(WebDriver driver) {
+		waitForElementVisible(driver, BasePageUI.ORDER_LINK_TEXT);
+		clickToElement(driver, BasePageUI.ORDER_LINK_TEXT);
+		return PageGeneratorManager.getOrderPage(driver);
+	}
+
+	public RewardPointPageObject openRewardPointPage(WebDriver driver) {
+		waitForElementVisible(driver, BasePageUI.REWARD_POINT_LINK_TEXT);
+		clickToElement(driver, BasePageUI.REWARD_POINT_LINK_TEXT);
+		return PageGeneratorManager.getRewardPointPage(driver);
+
+	}
+	
+	public CustomerPageObject openCustomerPage(WebDriver driver) {
+		waitForElementVisible(driver, BasePageUI.CUSTOMER_INFO_LINK_TEXT);
+		clickToElement(driver, BasePageUI.CUSTOMER_INFO_LINK_TEXT);
+		return PageGeneratorManager.getCustomerPage(driver);
+		
+	}
+
+
 
 }
