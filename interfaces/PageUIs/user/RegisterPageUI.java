@@ -1,4 +1,4 @@
-package PageUIs;
+package PageUIs.user;
 
 public class RegisterPageUI {
 	

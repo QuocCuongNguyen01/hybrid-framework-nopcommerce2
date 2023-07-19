@@ -11,17 +11,17 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import commons.BasePage;
-import pageObject.CustomerPageObject;
-import pageObject.HomePageObject;
-import pageObject.LoginPageObject;
-import pageObject.RegisterPageObject;
+import pageObjects.user.CustomerPageObject;
+import pageObjects.user.HomePageObject;
+import pageObjects.user.UserLoginPageObject;
+import pageObjects.user.RegisterPageObject;
 
 public class Level_03_PageObject {
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir");
 	private HomePageObject homePage;
 	private RegisterPageObject registerPage;
-	private LoginPageObject loginPage;
+	private UserLoginPageObject loginPage;
 	private CustomerPageObject customerPage;
 	private String emailAdress = getEmailRandom();
 
@@ -147,7 +147,7 @@ public class Level_03_PageObject {
 
 		homePage.clickToLoginLink();
 		
-		loginPage = new  LoginPageObject(driver);
+		loginPage = new  UserLoginPageObject(driver);
 		
 		loginPage.enterToEmailTextBox(emailAdress);
 		

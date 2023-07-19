@@ -17,7 +17,7 @@ import pageObjects.user.OrderPageObject;
 import pageObjects.user.RegisterPageObject;
 import pageObjects.user.RewardPointPageObject;
 
-public class Level_08_Switch_Page extends BaseTest {
+public class Level_09_Page_Navigation extends BaseTest {
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir");
 	private HomePageObject homePage;
@@ -75,29 +75,29 @@ public class Level_08_Switch_Page extends BaseTest {
 	@Test
 	public void User_03_Switch_Page() {
 		// Customer Page => Address Page
-		//addressPage = customerPage.openAddressPage(driver);
+		addressPage = customerPage.openAddressPage();
 		
 		// Address Page => Order Page
-		//orderPage = addressPage.openOrderPage(driver);
+		orderPage = addressPage.openOrderPage();
 		
 		// Order Page => Customer info Page
-		//customerPage = orderPage.openCustomerPage(driver);
+		customerPage = orderPage.openCustomerPage();
 		
 		// Customer Page => Order Page
-		//orderPage = customerPage.openOrderPage(driver);
+		orderPage = customerPage.openOrderPage();
 		
 		// Order Page => Address Page
-		//addressPage = orderPage.openAddressPage(driver);
+		addressPage = orderPage.openAddressPage();
 		
 		// Address Page => Reward Point Page
-		//rewardPointPage = addressPage.openRewardPointPage(driver);
+		rewardPointPage = addressPage.openRewardPointPage();
 		
 		// Reward Point Page => Customer Page
-	//	customerPage = rewardPointPage.openCustomerPage(driver);
+		customerPage = rewardPointPage.openCustomerPage();
 		
 
 		// Customer Page => Reward Points Page
-	//	rewardPointPage = customerPage.openRewardPointPage(driver);
+		rewardPointPage = customerPage.openRewardPointPage();
 	}
 	public void sleepInsecond(long timeInsecond) {
 		try {

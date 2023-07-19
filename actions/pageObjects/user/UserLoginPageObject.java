@@ -1,15 +1,15 @@
-package pageObject;
+package pageObjects.user;
 
 import org.openqa.selenium.WebDriver;
 
-import PageUIs.LoginPageUI;
+import PageUIs.user.LoginPageUI;
 import commons.BasePage;
 import commons.PageGeneratorManager;
 
-public class LoginPageObject extends BasePage {
+public class UserLoginPageObject extends BasePage {
 	WebDriver driver;
 
-	public LoginPageObject(WebDriver driver) {
+	public UserLoginPageObject(WebDriver driver) {
 		this.driver = driver;
 	}
 
@@ -43,6 +43,12 @@ public class LoginPageObject extends BasePage {
 		waitForElementClickable(driver, LoginPageUI.NOP_COMMERCE_LOGO);
 		clickToElement(driver, LoginPageUI.NOP_COMMERCE_LOGO);
 		
+	}
+	
+	public HomePageObject loginToUser(String emailAdress, String password) {
+		enterToEmailTextBox(emailAdress);
+		enterToPasswordTextbox(password);
+		return clickToLoginButton();
 	}
 
 }

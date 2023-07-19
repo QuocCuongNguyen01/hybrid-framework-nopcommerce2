@@ -10,7 +10,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-
 public class BaseTest {
 	private WebDriver driver;
 
@@ -69,6 +68,37 @@ public class BaseTest {
 
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 		driver.get("https://demo.nopcommerce.com/");
+		return driver;
+	}
+
+	protected WebDriver getBrowserDriver(String browserName, String url) {
+
+		BrowserList browser = BrowserList.valueOf(browserName.toUpperCase());
+
+		switch (browser) {
+		case FIREFOX:
+			driver = new FirefoxDriver();
+			break;
+		case CHROME:
+			driver = new ChromeDriver();
+
+			break;
+		case EDGE:
+			driver = new EdgeDriver();
+			break;
+		case OPERA:
+			break;
+
+		default:
+			throw new RuntimeException("Browser name is not valid.");
+
+		}
+
+		driver.manage().window().setPosition(new Point(0, 0));
+		driver.manage().window().setSize(new Dimension(1920, 1080));
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+		driver.get(url);
 		return driver;
 	}
 

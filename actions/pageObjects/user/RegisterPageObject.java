@@ -1,8 +1,8 @@
-package pageObject;
+package pageObjects.user;
 
 import org.openqa.selenium.WebDriver;
 
-import PageUIs.RegisterPageUI;
+import PageUIs.user.RegisterPageUI;
 import commons.BasePage;
 import commons.PageGeneratorManager;
 

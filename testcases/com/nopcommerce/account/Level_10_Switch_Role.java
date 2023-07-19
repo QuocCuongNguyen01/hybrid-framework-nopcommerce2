@@ -9,6 +9,8 @@ import org.testng.annotations.Test;
 
 import commons.BaseTest;
 import commons.PageGeneratorManager;
+import pageObjects.admin.AdminDashboardPageObject;
+import pageObjects.admin.AdminLoginPageObject;
 import pageObjects.user.AddressPageObject;
 import pageObjects.user.CustomerPageObject;
 import pageObjects.user.HomePageObject;
@@ -17,27 +19,34 @@ import pageObjects.user.OrderPageObject;
 import pageObjects.user.RegisterPageObject;
 import pageObjects.user.RewardPointPageObject;
 
-public class Level_08_Switch_Page extends BaseTest {
+public class Level_10_Switch_Role extends BaseTest {
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir");
 	private HomePageObject homePage;
 	private RegisterPageObject registerPage;
-	private UserLoginPageObject loginPage;
+	private UserLoginPageObject userLoginPage;
+	private AdminLoginPageObject adminLoginPage;
+	private AdminDashboardPageObject adminDashBoardPage;
 	private CustomerPageObject customerPage;
 	private AddressPageObject addressPage;
 	private OrderPageObject orderPage;
 	private RewardPointPageObject rewardPointPage;
 	private String emailAdress = getEmailRandom();
-
-	@Parameters("browser")
+	
+	private	String adminUrl, endUserUrl;
+	
+	@Parameters({"browser", "adminUrl","userUrl"})
 	@BeforeClass
-	public void beforeClass(String browserName) {
-		driver = getBrowserDriver(browserName);
+	public void beforeClass(String browserName, String adminUrl, String userUrl) {
+		driver = getBrowserDriver(browserName, userUrl);
+		
+		this.adminUrl = adminUrl;
+		this.endUserUrl = userUrl;
 		homePage =  PageGeneratorManager.getHomePage(driver);
 	}
 
 	@Test
-	public void User_01_Register_Success() {
+	public void User_01_User_To_Admin() {
 		//homePage = registerPage.clickToNopCommerceLogo();
 
 		registerPage = homePage.clickToRegisterLink();
@@ -51,53 +60,37 @@ public class Level_08_Switch_Page extends BaseTest {
 		registerPage.clickToRegisterButton();
 
 		Assert.assertEquals(registerPage.getRegisterSuccessMessageText(), "Your registration completed");
-	}
-
-	@Test
-	public void User_02_Login_Success() {
 		homePage = registerPage.clickToNopCommerceLogo();
 
-		loginPage = homePage.clickToLoginLink();
+		userLoginPage = homePage.clickToLoginLink();
 
-		loginPage.enterToEmailTextBox(emailAdress);
+		
+		homePage = userLoginPage.loginToUser(emailAdress, "123456");
+		
+		homePage.clickToLogoutLink();
 
-		loginPage.enterToPasswordTextbox("123456");
+		// Homepage user => login page admin
+		
+		homePage.openPageUrl(driver, adminUrl);
+		
+		adminLoginPage = PageGeneratorManager.getAdminLoginPage(driver);
+	
+		
+		adminDashBoardPage = adminLoginPage.loginToAdmin("admin@yourstore.com", "admin");
+		
+		Assert.assertTrue(adminDashBoardPage.isPageLoadedSuccess(driver));
+		}
 
-		homePage = loginPage.clickToLoginButton();
-
-		customerPage = homePage.clickToMyAccountLink();
-
-		Assert.assertEquals(customerPage.getFirstNameTexboxAttributeValue(), "Anh");
-		Assert.assertEquals(customerPage.getLastNameTexboxAttributeValue(), "Tuan");
-		Assert.assertEquals(customerPage.getEmailTexboxAttributeValue(), emailAdress);
-	}
 
 	@Test
-	public void User_03_Switch_Page() {
-		// Customer Page => Address Page
-		//addressPage = customerPage.openAddressPage(driver);
+	public void User_02_Admin_To_User() {
+		adminLoginPage=adminDashBoardPage.clickToLogoutLink();
+		adminLoginPage.openPageUrl(driver, this.endUserUrl);
+		homePage = PageGeneratorManager.getHomePage(driver);
 		
-		// Address Page => Order Page
-		//orderPage = addressPage.openOrderPage(driver);
+		userLoginPage = homePage.clickToLoginLink();
+		homePage = userLoginPage.loginToUser(emailAdress, "123456");
 		
-		// Order Page => Customer info Page
-		//customerPage = orderPage.openCustomerPage(driver);
-		
-		// Customer Page => Order Page
-		//orderPage = customerPage.openOrderPage(driver);
-		
-		// Order Page => Address Page
-		//addressPage = orderPage.openAddressPage(driver);
-		
-		// Address Page => Reward Point Page
-		//rewardPointPage = addressPage.openRewardPointPage(driver);
-		
-		// Reward Point Page => Customer Page
-	//	customerPage = rewardPointPage.openCustomerPage(driver);
-		
-
-		// Customer Page => Reward Points Page
-	//	rewardPointPage = customerPage.openRewardPointPage(driver);
 	}
 	public void sleepInsecond(long timeInsecond) {
 		try {
