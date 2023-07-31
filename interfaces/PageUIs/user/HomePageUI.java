@@ -2,10 +2,11 @@ package PageUIs.user;
 
 public class HomePageUI {
 	// Field / biến
-	public static final String REGISTER_LINK = "//a[@class='ico-register']";
-	public static final String LOGIN_LINK = "//a[@class='ico-login']";
-	public static final String MY_ACCOUNT_LINK = "//a[@class='ico-account']";
-	public static final String LOGOUT_LINK = "//a[@class='ico-logout']";
+	public static final String REGISTER_LINK = "class=ico-register";
+
+	public static final String LOGIN_LINK = "xpath=//a[@class='ico-login']";
+	public static final String MY_ACCOUNT_LINK = "xpath=//a[@class='ico-account']";
+	public static final String LOGOUT_LINK = "xpath=//a[@class='ico-logout']";
 	//a.ico-account
 	// 1 - public 
 	// Không set protected vì các class bên ngoài package sẽ không dùng được -> không áp dụng kế thừa
