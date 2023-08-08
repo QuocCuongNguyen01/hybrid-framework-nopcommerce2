@@ -7,7 +7,7 @@
 	<classpathentry kind="src" path="resources"/>
 	<classpathentry kind="src" path="testdata"/>
 	<classpathentry kind="lib" path="libSelenium/selenium-server-4.10.0.jar"/>
-	<classpathentry kind="lib" path="libSelenium/testng-7.4.0.jar"/>
+	<classpathentry kind="lib" path="libSelenium/testng-7.8.0.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="module" value="true"/>
