@@ -89,4 +89,18 @@ public class HomePageObject extends BasePage {
 		waitForElementClickable(driver, HomePageUI.DYNAMIC_CHECKBOX_BY_ROW_INDEX_AND_COLUMN_INDEX,rowIndex, String.valueOf(columnIndex));
 		checkToElement(driver, HomePageUI.DYNAMIC_CHECKBOX_BY_ROW_INDEX_AND_COLUMN_INDEX,rowIndex, String.valueOf(columnIndex));
 	}
+
+	public void clickToAccount() {
+		waitForElementClickable(driver, HomePageUI.ACCOUNT_LINK);
+		clickToElement(driver, HomePageUI.ACCOUNT_LINK);
+		
+	}
+
+	public RegisterPageObjectPanda clickToRegisterLink(String value) {
+		waitForElementClickable(driver, HomePageUI.DYNAMIC_ACCOUNT_LINK_REGISTER, value);
+		clickToElement(driver, HomePageUI.DYNAMIC_ACCOUNT_LINK_REGISTER, value);
+		return PageGeneratorManager.getRegisterPageObjectPanda(driver);
+	}
+	
+	
 }

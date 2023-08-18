@@ -16,4 +16,8 @@ public class HomePageUI {
 	public static final String DYNAMIC_TEXBOX_BY_ROW_INDEX_AND_COLUMN_INDEX = "xpath=//tr[%s]/td[%s]//input";
 	public static final String DYNAMIC_DROPDOWN_BY_ROW_INDEX_AND_COLUMN_INDEX = "xpath=//tr[%s]/td[%s]//select";
 	public static final String DYNAMIC_CHECKBOX_BY_ROW_INDEX_AND_COLUMN_INDEX = "xpath=//tr[%s]/td[%s]//input[@type='checkbox']";
+	
+	public static final String ACCOUNT_LINK = "xpath=//div[@class='account-cart-wrapper']//span[text()='Account']";
+	public static final String DYNAMIC_ACCOUNT_LINK_REGISTER = "xpath=//div[@class='links']//a[text()='%s']";
+	
 	}
