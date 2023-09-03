@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite parallel="false" name="Nopcommerce">
 
-	<parameter name="adminUrl" value="https://admin-demo.nopcommerce.com" />
-	<parameter name="userUrl" value="https://demo.nopcommerce.com/" />
+	<listeners>
+		<listener class-name="commons.MethodListener"/>
+	</listeners>
+
+
 	<test name="Run on FireFox">
-		<parameter name="browser" value="firefox" />
+		<parameter name="browser" value="chrome" />
 		<classes>
 
-			<class name="com.nopcommerce.account.Level_10_Switch_Role" />
+			<class name="com.nopcommerce.account.Level_15_Assert_Verify" />
 
 		</classes>
 	</test>
@@ -36,4 +39,6 @@
 
 		</classes>
 	</test>  -->
+
+
 </suite> 
