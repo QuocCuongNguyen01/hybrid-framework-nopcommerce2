@@ -1,5 +1,6 @@
 package commons;
 
+import java.io.File;
 import java.time.Duration;
 import java.util.Random;
 
@@ -13,6 +14,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
+import org.testng.annotations.BeforeSuite;
 
 public class BaseTest {
 	protected final Logger log;
@@ -171,5 +173,29 @@ public class BaseTest {
 			Reporter.getCurrentTestResult().setThrowable(e);
 		}
 		return pass;
+	}
+	public WebDriver getDriver() {
+		return driver;
+	}
+	@BeforeSuite
+	public void deleteFileReportNG() {
+		log.info("Starting delete all file in ReportNG screenshot");
+		deleteAllFileInFolder();
+		log.info("Deleted success");
+	}
+	
+	public void deleteAllFileInFolder() {
+		try {
+			String pathFolderDownload = GlobalConstant.REPORTNG_IMAGE_PATH;
+			File file = new File(pathFolderDownload);
+			File[] listOfFiles = file.listFiles();
+			for (int i = 0; i < listOfFiles.length; i++) {
+				if (listOfFiles[i].isFile()) {
+					new File(listOfFiles[i].toString()).delete();
+				}
+			}
+		} catch (Exception e) {
+			System.out.print(e.getMessage());
+		}
 	}
 }
