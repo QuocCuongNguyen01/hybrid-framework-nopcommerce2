@@ -54,7 +54,7 @@ public class Level_18_Extent_ReportV5 extends BaseTest {
 
 		// Verify error message at LastName Textbox Displayed -> Failed
 		ExtentTestManager.getTest().log(Status.INFO, "User 01  - Step 05: Verify error message at LastName textbox");
-		Assert.assertEquals(registerPage.getLastNameErrorMessageText(), "Last name is required.");
+		Assert.assertEquals(registerPage.getLastNameErrorMessageText(), "Last name is required.") ;
 
 	}
 
