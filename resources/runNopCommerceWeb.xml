@@ -4,9 +4,7 @@
 
 	<listeners>
 		<listener class-name="commons.MethodListener" />
-		<listener class-name="reportConfig.ReportNGListener" />
-		<listener class-name="org.uncommons.reportng.HTMLReporter" />
-		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+		<listener class-name="reportConfig.ExtentTestListener" />
 	</listeners>
 
 
@@ -14,19 +12,10 @@
 		<parameter name="browser" value="firefox" />
 		<classes>
 
-			<class name="com.nopcommerce.account.Level_17_ReportNG" />
+			<class name="com.nopcommerce.account.Level_18_Extent_ReportV5" />
 
 		</classes>
-	</test>
-	<test name="Run on Chrome">
-		<parameter name="browser" value="chrome" />
-		<classes>
-
-			<class name="com.nopcommerce.account.Level_17_ReportNG" />
-
-		</classes>
-	</test>
-	
+		</test>
 
 	<!-- <test name="Run on Chrome">
 		<parameter name="browser" value="chrome" />
