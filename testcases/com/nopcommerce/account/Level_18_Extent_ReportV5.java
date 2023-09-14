@@ -78,7 +78,7 @@ public class Level_18_Extent_ReportV5 extends BaseTest {
 		ExtentTestManager.getTest().log(Status.INFO, "User 01  - Step 10: Enter to Confirm Password textbox" + password);
 		registerPage.enterToConfirmPasswordTextbox(password);
 
-		// Verify successs message -> FailED
+		// Verify successs message -> Failed
 
 		ExtentTestManager.getTest().log(Status.INFO, "User 01  - Step 11:Click to register button");
 		registerPage.clickToRegisterButton();
