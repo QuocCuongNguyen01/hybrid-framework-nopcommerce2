@@ -178,24 +178,33 @@ public class BaseTest {
 		return driver;
 	}
 	@BeforeSuite
-	public void deleteFileReportNG() {
-		log.info("Starting delete all file in ReportNG screenshot");
-		deleteAllFileInFolder();
-		log.info("Deleted success");
+	//public void deleteFileReportNG() {
+		//log.info("Starting delete all file in ReportNG screenshot");
+		//deleteAllFileInFolder();
+		//log.info("Deleted success");
+	
+	public void deleteFileInReport() {
+		//remove all file in reportNGImage
+		deleteAllFileInFolder("reportNGImage");
+		//remove all file in allure attachment
+		deleteAllFileInFolder("allure-json");
 	}
 	
-	public void deleteAllFileInFolder() {
+	public void deleteAllFileInFolder(String folderName) {
 		try {
-			String pathFolderDownload = GlobalConstant.REPORTNG_IMAGE_PATH;
+			String pathFolderDownload = GlobalConstant.RELATIVE_PROJECT_PATH + File.separator + folderName;
 			File file = new File(pathFolderDownload);
 			File[] listOfFiles = file.listFiles();
-			for (int i = 0; i < listOfFiles.length; i++) {
-				if (listOfFiles[i].isFile()) {
-					new File(listOfFiles[i].toString()).delete();
+			if (listOfFiles.length != 0) {
+				for (int i = 0; i < listOfFiles.length; i++) {
+					if (listOfFiles[i].isFile() && !listOfFiles[i].getName().equals("environment.properties")) {
+						new File(listOfFiles[i].toString()).delete();
+					}
 				}
 			}
 		} catch (Exception e) {
 			System.out.print(e.getMessage());
 		}
 	}
+	
 }
