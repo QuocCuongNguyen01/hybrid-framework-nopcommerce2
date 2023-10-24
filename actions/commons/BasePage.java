@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -292,13 +293,51 @@ public class BasePage {
 		}
 	}
 
-	public boolean isElementDisplayed(WebDriver driver, String locator) {
-		return getWebElement(driver, locator).isDisplayed();
+	public boolean isElementDisplayed(WebDriver driver, String locatorType) {
+		return getWebElement(driver, locatorType).isDisplayed();
 	}
+	//Case 1: Element cos hiển thị trên UI và có trong HTML: isDisplayed trả về true
+	//Case 2: Element không hiển thị trên UI và có trong HTML: isDisplayed trả về False
+	
+//	public boolean isElementDisplayed(WebDriver driver, String locatorType) {
+//		boolean status;
+//		try {
+//			//Case 1: Element cos hiển thị trên UI và có trong HTML: isDisplayed trả về true
+//			//Case 2: Element không hiển thị trên UI và có trong HTML: isDisplayed trả về False
+//			status = getWebElement(driver, locatorType).isDisplayed();
+//		} catch (NoSuchElementException e) {
+//			//Case 3: Element không hiển thị trên UI và không có trong HTML: tự gán bằng false
+//			status = false;
+//		}
+//		return status;
+//	}
 	public boolean isElementDisplayed(WebDriver driver, String locator, String...restParams) {
 		return getWebElement(driver, getDynamicLocator(locator, restParams)).isDisplayed();
 	}
 
+	public void setImplicitWait(WebDriver driver, long timeout) {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(timeout));
+	}
+	
+	public boolean isElementUndisplayed(WebDriver driver, String locatorType) {
+		// trước khi tìm element thì set time ngắn thôi
+		setImplicitWait(driver, shortTimeout);
+		List<WebElement> elements = getListWebElement(driver, locatorType);
+		setImplicitWait(driver, longTimeout);
+		if (elements.size()==0) {
+			System.out.println("Element không có trên UI và không có trong DOM");
+			return true;
+		} else if(elements.size()>0 && !elements.get(0).isDisplayed()){ 
+			System.out.println("Element không có trên UI và có trong DOM => true");
+			return true;
+		}else { 
+			
+			System.out.println("Element có trên UI và có trong DOM => False");
+			return false;
+		}
+	
+	}
+	
 	public boolean isElementSelected(WebDriver driver, String locator) {
 		return getWebElement(driver, locator).isSelected();
 	}
@@ -458,8 +497,10 @@ public class BasePage {
 		fullFileName = fullFileName.trim();
 		getWebElement(driver, BasePageUI.UPLOAD_FILE_TYOE).sendKeys(fullFileName);
 	}
+	
 
 	public long longTimeout = GlobalConstant.LONG_TIMEOUT;
+	public long shortTimeout = GlobalConstant.SHORT_TIMEOUT;
 
 
 }

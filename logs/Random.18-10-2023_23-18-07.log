@@ -1,0 +1,16 @@
+[18-10-2023 23:18:16.222 INFO com.nopcommerce.account.Level_16_Log] - User 01  - Step 01: Verify Register Link is Displayed
+[18-10-2023 23:18:16.369 INFO com.nopcommerce.account.Level_16_Log] - ----------FALSE----------
+[18-10-2023 23:18:16.370 INFO com.nopcommerce.account.Level_16_Log] - User 01  - Step 02: Click to register link
+[18-10-2023 23:18:17.541 INFO com.nopcommerce.account.Level_16_Log] - User 01  - Step 03: lick to register button
+[18-10-2023 23:18:17.903 INFO com.nopcommerce.account.Level_16_Log] - User 01  - Step 04: Verify error message at firstname textbox
+[18-10-2023 23:18:17.950 INFO com.nopcommerce.account.Level_16_Log] - ----------PASS----------
+[18-10-2023 23:18:17.950 INFO com.nopcommerce.account.Level_16_Log] - User 01  - Step 05: Verify error message at LastName textbox
+[18-10-2023 23:18:18.025 INFO com.nopcommerce.account.Level_16_Log] - ----------PASS----------
+[18-10-2023 23:18:18.210 INFO com.nopcommerce.account.Level_16_Log] - User 01  - Step 06: Enter to FirstName textboxAnh
+[18-10-2023 23:18:19.753 INFO com.nopcommerce.account.Level_16_Log] - User 01  - Step 07: Enter to LastName textboxTuan
+[18-10-2023 23:18:19.918 INFO com.nopcommerce.account.Level_16_Log] - User 01  - Step 08: Enter to Email textboxjoin76499@gmail.com
+[18-10-2023 23:18:20.115 INFO com.nopcommerce.account.Level_16_Log] - User 01  - Step 09: Enter to Password textbox123456
+[18-10-2023 23:18:20.200 INFO com.nopcommerce.account.Level_16_Log] - User 01  - Step 10: Enter to Confirm Password textbox123456
+[18-10-2023 23:18:20.289 INFO com.nopcommerce.account.Level_16_Log] - User 01  - Step 11:Click to register button
+[18-10-2023 23:18:21.655 INFO com.nopcommerce.account.Level_16_Log] - User 01  - Step 12: Verify messsage registration completed
+[18-10-2023 23:18:21.749 INFO com.nopcommerce.account.Level_16_Log] - ----------FALSE----------
