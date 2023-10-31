@@ -1,22 +1,17 @@
 package pageObjects.user;
 
-import javax.management.RuntimeErrorException;
-
 import org.openqa.selenium.WebDriver;
 
-import PageUIs.user.BasePageUI;
 import PageUIs.user.MyAccountSideBarPageUI;
+import commons.BaseElement;
 import commons.BasePage;
 import commons.PageGeneratorManager;
-import pageObjects.user.AddressPageObject;
-import pageObjects.user.CustomerPageObject;
-import pageObjects.user.OrderPageObject;
-import pageObjects.user.RewardPointPageObject;
 
-public class MyAccountSideBarPageObject extends BasePage{
+public class MyAccountSideBarPageObject extends BaseElement{
 	WebDriver driver;
 
 	public MyAccountSideBarPageObject(WebDriver driver) {
+		super(driver);
 		this.driver = driver;
 	}
 	public AddressPageObject openAddressPage() {

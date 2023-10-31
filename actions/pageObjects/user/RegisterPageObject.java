@@ -3,14 +3,14 @@ package pageObjects.user;
 import org.openqa.selenium.WebDriver;
 
 import PageUIs.user.RegisterPageUI;
-import commons.BasePage;
-import commons.PageGeneratorManager;
+import commons.BaseElement;
 import io.qameta.allure.Step;
 
-public class RegisterPageObject extends BasePage {
+public class RegisterPageObject extends BaseElement {
 	WebDriver driver;
 
 	public RegisterPageObject(WebDriver driver) {
+		super(driver);
 		this.driver = driver;
 	}
 
@@ -45,11 +45,7 @@ public class RegisterPageObject extends BasePage {
 		return getElementText(driver, RegisterPageUI.CONFIRM_PASSWORD_ERROR_MSG);
 	}
 
-	public HomePageObject clickToNopCommerceLogo() {
-		waitForElementClickable(driver, RegisterPageUI.NOP_COMMERCE_LOGO);
-		clickToElement(driver, RegisterPageUI.NOP_COMMERCE_LOGO);
-		return PageGeneratorManager.getHomePage(driver);
-	}
+
 	@Step("Enter to First Name textbox with value is {0}")
 	public void enterToFirstNameTextbox(String firstNameValue) {
 		waitForElementVisible(driver, RegisterPageUI.FIRSTNAME_TEXTBOX);

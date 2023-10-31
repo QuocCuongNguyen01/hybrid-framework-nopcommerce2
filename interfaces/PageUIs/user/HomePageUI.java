@@ -7,6 +7,10 @@ public class HomePageUI {
 	public static final String LOGIN_LINK = "xpath=//a[@class='ico-login']";
 	public static final String MY_ACCOUNT_LINK = "xpath=//a[@class='ico-account']";
 	public static final String LOGOUT_LINK = "xpath=//a[@class='ico-logout']";
+	
+	
+
+	
 	//a.ico-account
 	// 1 - public 
 	// Không set protected vì các class bên ngoài package sẽ không dùng được -> không áp dụng kế thừa

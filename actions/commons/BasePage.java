@@ -9,7 +9,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -19,8 +18,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import PageUIs.user.BasePageUI;
-
+import PageUIs.user.BaseElementUI;
 public class BasePage {
 
 	/* Web Browser */
@@ -495,7 +493,7 @@ public class BasePage {
 			fullFileName = fullFileName + filePath + file +"\n";
 		}
 		fullFileName = fullFileName.trim();
-		getWebElement(driver, BasePageUI.UPLOAD_FILE_TYOE).sendKeys(fullFileName);
+		getWebElement(driver, BaseElementUI.UPLOAD_FILE_TYOE).sendKeys(fullFileName);
 	}
 	
 

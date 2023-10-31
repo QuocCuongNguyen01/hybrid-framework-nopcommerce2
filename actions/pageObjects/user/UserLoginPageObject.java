@@ -3,13 +3,15 @@ package pageObjects.user;
 import org.openqa.selenium.WebDriver;
 
 import PageUIs.user.LoginPageUI;
+import commons.BaseElement;
 import commons.BasePage;
 import commons.PageGeneratorManager;
 
-public class UserLoginPageObject extends BasePage {
+public class UserLoginPageObject extends BaseElement {
 	WebDriver driver;
 
 	public UserLoginPageObject(WebDriver driver) {
+		super(driver);
 		this.driver = driver;
 	}
 
@@ -39,11 +41,11 @@ public class UserLoginPageObject extends BasePage {
 	}
 	
 
-	public void clickToNopCommerceLogo() {
-		waitForElementClickable(driver, LoginPageUI.NOP_COMMERCE_LOGO);
-		clickToElement(driver, LoginPageUI.NOP_COMMERCE_LOGO);
-		
-	}
+//	public void clickToNopCommerceLogo() {
+//		waitForElementClickable(driver, LoginPageUI.NOP_COMMERCE_LOGO);
+//		clickToElement(driver, LoginPageUI.NOP_COMMERCE_LOGO);
+//		
+//	}
 	
 	public HomePageObject loginToUser(String emailAdress, String password) {
 		enterToEmailTextBox(emailAdress);

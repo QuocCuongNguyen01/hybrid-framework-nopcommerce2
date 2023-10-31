@@ -17,5 +17,5 @@ public class RegisterPageUI {
 
 	public static final String REGISTRATION_COMPLETED_MSG = "xpath=//div[@class='result']";
 
-	public static final String NOP_COMMERCE_LOGO = "xpath=//div[@class='header-logo']//img";
+
 }

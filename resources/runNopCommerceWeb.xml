@@ -18,7 +18,7 @@
 		<parameter name="browser" value="firefox" />
 		<classes>
 
-			<class name="com.nopcommerce.account.Level_18_Extent_ReportV5" />
+			<class name="com.nopcommerce.account.Level_21_Pattern_Object" />
 
 		</classes>
 		</test>

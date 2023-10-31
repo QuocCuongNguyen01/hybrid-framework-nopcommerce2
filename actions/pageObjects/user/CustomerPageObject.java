@@ -34,4 +34,5 @@ public class CustomerPageObject extends MyAccountSideBarPageObject {
 		waitForElementVisible(driver, CustomerPageUI.EMAIL_TEXTBOX);
 		return getElementAttribute(driver, CustomerPageUI.EMAIL_TEXTBOX, "value");
 	}
+
 }
